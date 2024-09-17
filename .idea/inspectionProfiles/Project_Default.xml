@@ -1,0 +1,30 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8Inspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyTypeCheckerInspection" enabled="true" level="TYPO" enabled_by_default="true" editorAttributes="TYPO" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="test.test_missing1.*" />
+          <option value="python_file.missing1.time" />
+          <option value="test.missing1_test.*" />
+          <option value="time.*" />
+          <option value="lasagna" />
+          <option value="cv2.*" />
+          <option value="cvzone.HandTrackingModule.HandDetector.*" />
+          <option value="python_file.zadanie1.*" />
+          <option value="int.__setitem__" />
+          <option value="int.__getitem__" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

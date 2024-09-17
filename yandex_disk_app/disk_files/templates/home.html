@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Публичные файлы Яндекс.Диск</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+    <h2>Введите публичный ключ Яндекс.Диска:</h2>
+    <form action="{% url 'home' %}" method="GET">
+        <input type="text" name="public_key" placeholder="Вставьте ключ здесь" required>
+        <button type="submit">Получить файлы</button>
+    </form>
+
+    {% if files %}
+        <h2>Список файлов:</h2>
+        <ul>
+            {% for file in files %}
+                <li>
+                    {{ file.name }} -
+                    <a href="{{ file.download_link }}" download="{{ file.filename }}">{{ file.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет доступных файлов.</p>
+    {% endif %}
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js"></script>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div id="yandex-auth-widget"></div>
+    <script>
+        YaSendSuggest({
+            oauthQueryParams: {
+                client_id: '61e7dbc41ed44e849d62dc82ff328f8c',
+                response_type: 'token',
+                redirect_uri: 'http://127.0.0.1:8000/oauth/callback/'
+            },
+            tokenPageOrigin: 'http://127.0.0.1:8000'
+        });
+    </script>
+
+    <button id="login-button">Войти через Яндекс</button>
+    <form method="GET" id="public-key-form" style="display: none;">
+        <input type="text" name="public_key" placeholder="Публичный ключ" required>
+    </form>
+
+    <script>
+        document.getElementById('login-button').onclick = function() {
+            window.location.href = "{% url 'oauth_register' %}";  // Перенаправление на регистрацию
+        };
+
+        // Проверка на наличия access_token в сессии
+        const urlParams = new URLSearchParams(window.location.search);
+        const oauthToken = urlParams.get('oauth_token'); // Получите токен (если он есть)
+
+        if (oauthToken) {
+            document.getElementById('public-key-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
